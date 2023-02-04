@@ -24,4 +24,8 @@ public class RobotConstants {
     // USB port to plug joysticks into on driver station
     public static final int JOYSTICK_PORT_PILOT = 0;
     public static final int JOYSTICK_PORT_COPILOT = 1;
+
+    // PWM for claw
+    public static final int CLAW = 9;
+    public static final int CLAW_DIO = 9;
 }
