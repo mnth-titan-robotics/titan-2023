@@ -21,8 +21,10 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
  */
 public class Robot extends TimedRobot {
     private OperatorInterface _Ops;
-    private DriveSyst _driveSystem;
+    private DriveSyst _driveSyst;
     private RobotConstants constants;
+    private ClawSyst _clawSyst;
+    private ArmSyst _ArmSyst;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -31,8 +33,10 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        this._driveSystem = new DriveSyst();
+        this._driveSyst = new DriveSyst();
         this._Ops = new OperatorInterface();
+        this._clawSyst = new ClawSyst();
+        this._ArmSyst = new ArmSyst();
     }
 
     /** This function is run once each time the robot enters autonomous mode. */
@@ -55,7 +59,10 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during teleoperated mode. */
     @Override
     public void teleopPeriodic() {
-        _driveSystem.update(_Ops.rightDriveStick(), _Ops.leftDriveStick());
+        _driveSyst.update(_Ops.rightDriveStick(), _Ops.leftDriveStick());
+        _clawSyst.update(_Ops.clawCoStickR());
+        _ArmSyst.update(_Ops.armCoStickL());
+        _ArmSyst.update(_Ops.armset1());
     }
 
     /** This function is called once each time the robot enters test mode. */

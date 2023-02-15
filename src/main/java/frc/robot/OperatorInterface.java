@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class OperatorInterface {
 
@@ -22,4 +23,19 @@ public class OperatorInterface {
         return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.4;
     }
 
-}
+    public double clawCoStickR() {
+        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 1;
+    }
+
+    public double armCoStickL() {
+        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .5;
+    }
+
+    public DoubleSolenoid.Value armset1(){
+        return this.copilot_joy.getRawButton(3)?
+        DoubleSolenoid.Value.kForward:
+        (this.copilot_joy.getRawButton(4)?
+        DoubleSolenoid.Value.kReverse:
+        DoubleSolenoid.Value.kOff);
+        }
+}  

@@ -28,4 +28,18 @@ public class RobotConstants {
     // PWM for claw
     public static final int CLAW = 9;
     public static final int CLAW_DIO = 9;
+
+    // PWM for arm
+    public static final int Arm1 = 5;
+    public static final int Arm2 = 6;
+
+    // Pneumatic code
+    public static final int Solenoid_1_A = 1;
+    public static final int Solenoid_1_B = 2;
+    public static final int Solenoid_2_A = 3;
+    public static final int Solenoid_2_B = 4;
+    public static final int Solenoid_3_A = 5;
+    public static final int Solenoid_3_B = 6;
+    public static final int Solenoid_4_A = 7;
+    public static final int Solenoid_4_B = 8;
 }
