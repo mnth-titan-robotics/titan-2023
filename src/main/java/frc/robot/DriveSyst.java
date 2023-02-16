@@ -8,12 +8,15 @@ public class DriveSyst {
     private Victor Motor_FRD;
     private Victor Motor_BRD;
 
+    // private edu.wpi.first.wpilibj.Encoder encoder = new edu.wpi.first.wpilibj.Encoder(8, 9);
+
     public DriveSyst() {
         // set up for motors
         this.Motor_FLD = new Victor(RobotConstants.MOTOR_CHANNEL_FLD);
         this.Motor_BLD = new Victor(RobotConstants.MOTOR_CHANNEL_BLD);
         this.Motor_FRD = new Victor(RobotConstants.MOTOR_CHANNEL_FRD);
         this.Motor_BRD = new Victor(RobotConstants.MOTOR_CHANNEL_BRD);
+
 
         // set for inversions for motors
         this.Motor_FLD.setInverted(RobotConstants.MOTOR_INVERT_L);
@@ -29,4 +32,5 @@ public class DriveSyst {
         this.Motor_FRD.set(rightDriveStick);
 
     }
+    
 }
