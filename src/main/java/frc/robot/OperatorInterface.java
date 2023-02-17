@@ -28,7 +28,7 @@ public class OperatorInterface {
     }
 
     public double armCoStickL() {
-        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .5;
+        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .2;
     }
 
     public DoubleSolenoid.Value armset1(){

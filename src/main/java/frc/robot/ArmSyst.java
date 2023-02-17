@@ -1,8 +1,5 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.motorcontrol.Victor;
-
-import org.ejml.dense.row.linsol.qr.SolvePseudoInverseQrp_DDRM;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
@@ -22,8 +19,8 @@ public class ArmSyst {
         }
 
         public void update(double armCoStickL) {
-        Motor_ARM_1.set(armCoStickL);
-        Motor_ARM_2.set(armCoStickL);
+        Motor_ARM_1.set(armCoStickL + .2);
+        Motor_ARM_2.set(armCoStickL + .2);
         }
 
         public void update(DoubleSolenoid.Value armset1){
