@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 public class Robot extends TimedRobot {
     private OperatorInterface _Ops;
     private DriveSyst _driveSyst;
-    private RobotConstants constants;
+    private RobotConstants robotConstants;
     private ClawSyst _clawSyst;
     private ArmSyst _ArmSyst;
 

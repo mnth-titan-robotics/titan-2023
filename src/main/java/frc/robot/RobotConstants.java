@@ -34,12 +34,12 @@ public class RobotConstants {
     public static final int Arm2 = 6;
 
     // Pneumatic code
-    public static final int Solenoid_1_A = 1;
-    public static final int Solenoid_1_B = 2;
-    public static final int Solenoid_2_A = 3;
-    public static final int Solenoid_2_B = 4;
-    public static final int Solenoid_3_A = 5;
-    public static final int Solenoid_3_B = 6;
-    public static final int Solenoid_4_A = 7;
-    public static final int Solenoid_4_B = 8;
+    public static final int Solenoid_1_A = 0;
+    public static final int Solenoid_1_B = 1;
+    public static final int Solenoid_2_A = 2;
+    public static final int Solenoid_2_B = 3;
+    public static final int Solenoid_3_A = 4;
+    public static final int Solenoid_3_B = 5;
+    public static final int Solenoid_4_A = 6;
+    public static final int Solenoid_4_B = 7;
 }
