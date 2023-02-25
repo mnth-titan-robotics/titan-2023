@@ -42,4 +42,10 @@ public class RobotConstants {
     public static final int Solenoid_3_B = 5;
     public static final int Solenoid_4_A = 6;
     public static final int Solenoid_4_B = 7;
+
+    //Claw Distance
+    //Temporary values
+    public static final double OPEN_POSITION = 1;
+    public static final double CLAW_THRESHOLD = 0.5;
+    public static final double CLOSED_POSITION = -1;
 }

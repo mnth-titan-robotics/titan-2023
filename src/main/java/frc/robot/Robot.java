@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
     /** This function is run once each time the robot enters autonomous mode. */
     @Override
     public void autonomousInit() {
+        //calibrate encoders here
     }
 
     /** This function is called periodically during autonomous. */
@@ -68,6 +69,7 @@ public class Robot extends TimedRobot {
     /** This function is called once each time the robot enters test mode. */
     @Override
     public void testInit() {
+        
     }
 
     /** This function is called periodically during test mode. */
