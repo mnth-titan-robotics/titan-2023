@@ -48,4 +48,5 @@ public class RobotConstants {
     public static final double OPEN_POSITION = 1;
     public static final double CLAW_THRESHOLD = 0.5;
     public static final double CLOSED_POSITION = -1;
+    public static final double CLAW_MIN_RATE = 10;
 }
