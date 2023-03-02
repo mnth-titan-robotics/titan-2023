@@ -28,13 +28,13 @@ public class OperatorInterface {
     }
 
     public double armCoStickL() {
-        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .2;
+        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .4;
     }
 
     public DoubleSolenoid.Value armset1(){
-        return this.copilot_joy.getRawButton(3)?
+        return this.copilot_joy.getRawButton(6)?
         DoubleSolenoid.Value.kForward:
-        (this.copilot_joy.getRawButton(4)?
+        (this.copilot_joy.getRawButton(5)?
         DoubleSolenoid.Value.kReverse:
         DoubleSolenoid.Value.kOff);
         }
