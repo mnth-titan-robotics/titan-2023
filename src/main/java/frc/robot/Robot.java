@@ -4,11 +4,12 @@
 
 package frc.robot;
 
+import java.util.concurrent.TimeUnit;
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,9 +23,10 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 public class Robot extends TimedRobot {
     private OperatorInterface _Ops;
     private DriveSyst _driveSyst;
-    private RobotConstants robotConstants;
     private ClawSyst _clawSyst;
     private ArmSyst _ArmSyst;
+    private Pneumatic _Pneumatic;
+    //private ADXRS450_Gyro gyro;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -33,15 +35,62 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
+        //this.gyro = new ADXRS450_Gyro();
+        //this.gyro.calibrate();  
         this._driveSyst = new DriveSyst();
         this._Ops = new OperatorInterface();
         this._clawSyst = new ClawSyst();
         this._ArmSyst = new ArmSyst();
+        this._Pneumatic = new Pneumatic();
+        System.out.println("Hello World");
+        //this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS1);
     }
 
     /** This function is run once each time the robot enters autonomous mode. */
     @Override
     public void autonomousInit() {
+        
+        this._clawSyst.update(1);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._ArmSyst.update(1);
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._ArmSyst.update(0);
+        this._Pneumatic.update(Value.kForward);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        this._clawSyst.update(-1);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._clawSyst.update(1);
+        this._ArmSyst.update(-.3);
+        this._Pneumatic.update(Value.kReverse);
+
+
+        
+
+        this._driveSyst.update(0, 0);
     }
 
     /** This function is called periodically during autonomous. */
@@ -54,6 +103,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopInit() {
+        System.out.println("Hello from teleopInit");
     }
 
     /** This function is called periodically during teleoperated mode. */
@@ -62,7 +112,7 @@ public class Robot extends TimedRobot {
         _driveSyst.update(_Ops.rightDriveStick(), _Ops.leftDriveStick());
         _clawSyst.update(_Ops.clawCoStickR());
         _ArmSyst.update(_Ops.armCoStickL());
-        _ArmSyst.update(_Ops.armset1());
+        _Pneumatic.update(_Ops.armset1());
     }
 
     /** This function is called once each time the robot enters test mode. */
@@ -73,5 +123,11 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during test mode. */
     @Override
     public void testPeriodic() {
+        /**if (this.gyro.isConnected()) {
+            System.out.println("gyro is at rate:  " + this.gyro.getRate());
+            System.out.println("gyro is at angle: " + this.gyro.getAngle());
+        } else {
+            System.out.println("gyro is not connected");
+        }*/
     }
 }
