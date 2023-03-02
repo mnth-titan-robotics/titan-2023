@@ -12,7 +12,7 @@ public class ClawSyst {
     public ClawSyst() {
 
         this.Claw = new Victor(RobotConstants.CLAW);
-        this.encoder = new edu.wpi.first.wpilibj.Encoder(0, 1);
+        this.encoder = new edu.wpi.first.wpilibj.Encoder(8, 9);
         this.encoder.setDistancePerPulse(1.0/44.4);
         this.encoder.setMinRate(RobotConstants.CLAW_MIN_RATE);
     }
@@ -33,7 +33,7 @@ public class ClawSyst {
         double offset = this.encoder.getDistance() - RobotConstants.CLOSED_POSITION;
         return offset < RobotConstants.CLAW_THRESHOLD && offset > -RobotConstants.CLAW_THRESHOLD;
     }
-    //public boolean clawCalibration() {
-        //move claw to closed position--> call getStopped() --> stop motor --> reset()
-    //}
+    public void clawCalibration() {
+        this.encoder.reset();
+    }
 }
