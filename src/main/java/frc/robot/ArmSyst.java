@@ -15,8 +15,8 @@ public class ArmSyst {
         }
 
         public void update(double armCoStickL) {
-        Motor_ARM_1.set(armCoStickL + .4);
-        Motor_ARM_2.set(armCoStickL * -1 + .4);
+        Motor_ARM_1.set(armCoStickL + .5);
+        Motor_ARM_2.set(armCoStickL * -1 + .5);
         }
 
     }
