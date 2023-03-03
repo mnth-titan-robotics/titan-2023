@@ -6,7 +6,7 @@ package frc.robot;
 
 import java.util.concurrent.TimeUnit;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -35,8 +35,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        //this.gyro = new ADXRS450_Gyro();
-        //this.gyro.calibrate();  
+        /**this.gyro = new ADXRS450_Gyro();
+        this.gyro.calibrate();  */
         this._driveSyst = new DriveSyst();
         this._Ops = new OperatorInterface();
         this._clawSyst = new ClawSyst();
@@ -118,6 +118,7 @@ public class Robot extends TimedRobot {
     /** This function is called once each time the robot enters test mode. */
     @Override
     public void testInit() {
+        //this.gyro.calibrate();
     }
 
     /** This function is called periodically during test mode. */
@@ -128,6 +129,9 @@ public class Robot extends TimedRobot {
             System.out.println("gyro is at angle: " + this.gyro.getAngle());
         } else {
             System.out.println("gyro is not connected");
+        }
+        if (this.gyro.getAngle() > 5) {
+            
         }*/
     }
 }

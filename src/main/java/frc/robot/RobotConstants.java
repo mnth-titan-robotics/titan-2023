@@ -42,4 +42,7 @@ public class RobotConstants {
     public static final int Solenoid_3_B = 5;
     public static final int Solenoid_4_A = 6;
     public static final int Solenoid_4_B = 7;
+
+    //Gyro Values
+    public static final int 
 }
