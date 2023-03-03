@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         this._Pneumatic.update(Value.kReverse);
 
-        this._driveSyst.update(-1, -1);
+        this._driveSyst.update(-0.5, -0.5);
         
         try {
             TimeUnit.MILLISECONDS.sleep(2050);
