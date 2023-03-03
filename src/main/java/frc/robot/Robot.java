@@ -58,7 +58,13 @@ public class Robot extends TimedRobot {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        this._driveSyst.update(0.1, -0.1);
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         this._driveSyst.update(0, 0);
         /**this._clawSyst.update(1);
 
