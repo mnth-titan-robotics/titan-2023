@@ -43,28 +43,29 @@ public class Robot extends TimedRobot {
         this._ArmSyst = new ArmSyst();
         this._Pneumatic = new Pneumatic();
         System.out.println("Hello World");
+        this._Pneumatic.update(Value.kReverse);
         //this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS1);
     }
 
     /** This function is run once each time the robot enters autonomous mode. */
     @Override
     public void autonomousInit() {
-        this._Pneumatic.update(Value.kReverse);
+        
 
-        this._driveSyst.update(-0.5, -0.5);
+        this._driveSyst.update(-0.51, -0.51);
         
         try {
             TimeUnit.MILLISECONDS.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this._driveSyst.update(0.25, -0.25);
+        /**this._driveSyst.update(0.25, -0.25);
         
         try {
-            TimeUnit.MILLISECONDS.sleep(1000);
+            TimeUnit.MILLISECONDS.sleep(1500);
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            //e.printStackTrace();
+        }*/
         this._driveSyst.update(0, 0);
         /**this._clawSyst.update(1);
 
