@@ -98,7 +98,7 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during autonomous. */
     @Override
     public void autonomousPeriodic() {
-        this._driveSyst.update(1, 1);
+        this._driveSyst.update(-1, -1);
         
         try {
             TimeUnit.MILLISECONDS.sleep(2050);
