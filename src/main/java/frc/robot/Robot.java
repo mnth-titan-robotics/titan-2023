@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
     /** This function is run once each time the robot enters autonomous mode. */
     @Override
     public void autonomousInit() {
-        
+        this._Pneumatic.update(Value.kReverse);
         /**this._clawSyst.update(1);
 
         try {
