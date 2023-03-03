@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
         
-        this._clawSyst.update(1);
+        /**this._clawSyst.update(1);
 
         try {
             TimeUnit.MILLISECONDS.sleep(250);
@@ -83,14 +83,14 @@ public class Robot extends TimedRobot {
             e.printStackTrace();
         }
 
-        this._clawSyst.update(1);
+        this._clawSyst.update(0);
         this._ArmSyst.update(-.3);
         this._Pneumatic.update(Value.kReverse);
 
 
         
 
-        this._driveSyst.update(0, 0);
+        this._driveSyst.update(0, 0);*/
     }
 
     /** This function is called periodically during autonomous. */
