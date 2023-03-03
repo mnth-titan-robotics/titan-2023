@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
         this._driveSyst.update(-0.5, -0.5);
         
         try {
-            TimeUnit.MILLISECONDS.sleep(2050);
+            TimeUnit.MILLISECONDS.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
