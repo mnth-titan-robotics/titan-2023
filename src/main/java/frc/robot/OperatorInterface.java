@@ -16,11 +16,11 @@ public class OperatorInterface {
 
     // driver joysticks set up
     public double leftDriveStick() {
-        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 0.4;
+        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 0.6;
     }
 
     public double rightDriveStick() {
-        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.4;
+        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.6;
     }
 
     public double clawCoStickR() {
@@ -28,7 +28,7 @@ public class OperatorInterface {
     }
 
     public double armCoStickL() {
-        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .4;
+        return this.copilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * .6;
     }
 
     public DoubleSolenoid.Value armset1(){
