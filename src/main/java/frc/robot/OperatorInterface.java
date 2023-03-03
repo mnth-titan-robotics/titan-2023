@@ -36,9 +36,8 @@ public class OperatorInterface {
         DoubleSolenoid.Value.kForward:
         (this.copilot_joy.getRawButton(5)?
 
-        //DoubleSolenoid.Value.kReverse:
-        // DoubleSolenoid.Value.kOff);
-        DoubleSolenoid.Value.kReverse):
+        DoubleSolenoid.Value.kReverse:
+        DoubleSolenoid.Value.kOff);
 
         }
 }  
