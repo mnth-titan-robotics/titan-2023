@@ -50,6 +50,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
         this._Pneumatic.update(Value.kReverse);
+
+
         /**this._clawSyst.update(1);
 
         try {
@@ -96,6 +98,15 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during autonomous. */
     @Override
     public void autonomousPeriodic() {
+        this._driveSyst.update(1, 1);
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(2050);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._driveSyst.update(0, 0);
     }
 
     /**
