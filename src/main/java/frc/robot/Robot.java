@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
         this._Pneumatic = new Pneumatic();
         System.out.println("Hello World");
         this._Pneumatic.update(Value.kReverse);
-        this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS1);
+        this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
     }
 
     /** This function is run once each time the robot enters autonomous mode. */
@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
         // zero the gyro
         gyro.calibrate(); 
 
-        this._driveSyst.update(-0.51, -0.51);
+        this._driveSyst.update(-0.51, -0.51, false, false);
         
         try {
             TimeUnit.MILLISECONDS.sleep(3000);
@@ -67,7 +67,7 @@ public class Robot extends TimedRobot {
         } catch (InterruptedException e) {
             //e.printStackTrace();
         }*/
-        this._driveSyst.update(0, 0);
+        this._driveSyst.update(0, 0, false, false);
         /**this._clawSyst.update(1);
 
         try {
@@ -116,13 +116,13 @@ public class Robot extends TimedRobot {
     public void autonomousPeriodic() {
         double angle = this.gyro.getAngle();
         if (angle > 2 && angle < 90) {
-            this._driveSyst.update(-0.1, -0.1);
+            this._driveSyst.update(-0.1, -0.1, false, false);
         }
         else if (angle < 358 && angle > 270) {
-            this._driveSyst.update(0.1, 0.1);
+            this._driveSyst.update(0.1, 0.1,false, false);
         }
         else if (angle < 2 && angle > 358) {
-            this._driveSyst.update(0, 0);
+            this._driveSyst.update(0, 0, false, false);
         }
     }
 
@@ -137,7 +137,7 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during teleoperated mode. */
     @Override
     public void teleopPeriodic() {
-        _driveSyst.update(_Ops.rightDriveStick(), _Ops.leftDriveStick());
+        _driveSyst.update(_Ops.rightDriveStick(), _Ops.leftDriveStick(), _Ops.highToggle(), _Ops.lowToggle());
         _clawSyst.update(_Ops.clawCoStickR());
         _ArmSyst.update(_Ops.armCoStickL());
         _Pneumatic.update(_Ops.armset1());

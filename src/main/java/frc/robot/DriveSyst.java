@@ -8,6 +8,9 @@ public class DriveSyst {
     private Victor Motor_FRD;
     private Victor Motor_BRD;
 
+    double multiplier = 0.6;
+
+
     // private edu.wpi.first.wpilibj.Encoder encoder = new edu.wpi.first.wpilibj.Encoder(8, 9);
 
     public DriveSyst() {
@@ -25,11 +28,19 @@ public class DriveSyst {
         this.Motor_BRD.setInverted(RobotConstants.MOTOR_INVERT_R);
     }
 
-    public void update(double leftDriveStick, double rightDriveStick) {
-        this.Motor_BLD.set(leftDriveStick);
-        this.Motor_BRD.set(rightDriveStick);
-        this.Motor_FLD.set(leftDriveStick);
-        this.Motor_FRD.set(rightDriveStick);
+    public void update(double leftDriveStick, double rightDriveStick, boolean btn1, boolean btn2) {
+
+        if(btn1){
+            multiplier = 0.6;
+        }
+        if(btn2){
+            multiplier = 0.8;
+        }
+        
+        this.Motor_BLD.set(leftDriveStick * multiplier);
+        this.Motor_BRD.set(rightDriveStick * multiplier);
+        this.Motor_FLD.set(leftDriveStick* multiplier);
+        this.Motor_FRD.set(rightDriveStick* multiplier);
 
     }
     

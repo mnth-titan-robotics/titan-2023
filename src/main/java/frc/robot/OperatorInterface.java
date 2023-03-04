@@ -8,25 +8,29 @@ public class OperatorInterface {
     private Joystick pilot_joy;
     private Joystick copilot_joy;
 
+    
+
     // setting up joysticks
     public OperatorInterface() {
         this.pilot_joy = new Joystick(RobotConstants.JOYSTICK_PORT_PILOT);
         this.copilot_joy = new Joystick(RobotConstants.JOYSTICK_PORT_COPILOT);
     }
 
+    public boolean highToggle(){
+        return this.pilot_joy.getRawButton(6);
+    }
+
+    public boolean lowToggle(){
+        return this.pilot_joy.getRawButton(5);
+    }
+
     // driver joysticks set up
     public double leftDriveStick() {
-        if (this.pilot_joy.getRawButton(6)) {
-        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 0.8;
-        }
-        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 0.6;
+        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L);
     }
 
     public double rightDriveStick() {
-        if (this.pilot_joy.getRawButton(6)) {
-            return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.8;
-            }
-            return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.6;
+        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R);
     }
 
     public double clawCoStickR() {
