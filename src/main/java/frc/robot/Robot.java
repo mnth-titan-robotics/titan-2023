@@ -113,7 +113,16 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during autonomous. */
     @Override
     public void autonomousPeriodic() {
-
+        /*double angle = this.gyro.getAngle();
+        if (angle > 2 && angle < 90) {
+            this._driveSyst.update(-0.1, -0.1);
+        }
+        else if (angle < 358 && angle > 270) {
+            this._driveSyst.update(0.1, 0.1);
+        }
+        else if (angle < 2 && angle > 358) {
+            this._driveSyst.update(0, 0);
+        }*/
     }
 
     /**
