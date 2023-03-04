@@ -6,7 +6,7 @@ package frc.robot;
 
 import java.util.concurrent.TimeUnit;
 
-//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -26,7 +26,7 @@ public class Robot extends TimedRobot {
     private ClawSyst _clawSyst;
     private ArmSyst _ArmSyst;
     private Pneumatic _Pneumatic;
-    //private ADXRS450_Gyro gyro;
+    private ADXRS450_Gyro gyro;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -44,13 +44,14 @@ public class Robot extends TimedRobot {
         this._Pneumatic = new Pneumatic();
         System.out.println("Hello World");
         this._Pneumatic.update(Value.kReverse);
-        //this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS1);
+        this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS1);
     }
 
     /** This function is run once each time the robot enters autonomous mode. */
     @Override
     public void autonomousInit() {
-        
+        // zero the gyro
+        gyro.calibrate(); 
 
         this._driveSyst.update(-0.51, -0.51);
         
@@ -113,7 +114,7 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during autonomous. */
     @Override
     public void autonomousPeriodic() {
-        /*double angle = this.gyro.getAngle();
+        double angle = this.gyro.getAngle();
         if (angle > 2 && angle < 90) {
             this._driveSyst.update(-0.1, -0.1);
         }
@@ -122,7 +123,7 @@ public class Robot extends TimedRobot {
         }
         else if (angle < 2 && angle > 358) {
             this._driveSyst.update(0, 0);
-        }*/
+        }
     }
 
     /**
@@ -145,20 +146,17 @@ public class Robot extends TimedRobot {
     /** This function is called once each time the robot enters test mode. */
     @Override
     public void testInit() {
-        //this.gyro.calibrate();
+        this.gyro.calibrate();
     }
 
     /** This function is called periodically during test mode. */
     @Override
     public void testPeriodic() {
-        /**if (this.gyro.isConnected()) {
+        if (this.gyro.isConnected()) {
             System.out.println("gyro is at rate:  " + this.gyro.getRate());
             System.out.println("gyro is at angle: " + this.gyro.getAngle());
         } else {
             System.out.println("gyro is not connected");
         }
-        if (this.gyro.getAngle() > 5) {
-            
-        }*/
     }
 }
