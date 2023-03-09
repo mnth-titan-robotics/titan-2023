@@ -6,10 +6,11 @@ package frc.robot;
 
 import java.util.concurrent.TimeUnit;
 
-//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import frc.robot.PIDSubSystem.TurnToAngle;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +27,7 @@ public class Robot extends TimedRobot {
     private ClawSyst _clawSyst;
     private ArmSyst _ArmSyst;
     private Pneumatic _Pneumatic;
-    //private ADXRS450_Gyro gyro;
+    private ADXRS450_Gyro gyro;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -35,8 +36,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        /**this.gyro = new ADXRS450_Gyro();
-        this.gyro.calibrate();  */
+        this.gyro = new ADXRS450_Gyro();
+        this.gyro.calibrate();
         this._driveSyst = new DriveSyst();
         this._Ops = new OperatorInterface();
         this._clawSyst = new ClawSyst();
@@ -44,75 +45,61 @@ public class Robot extends TimedRobot {
         this._Pneumatic = new Pneumatic();
         System.out.println("Hello World");
         this._Pneumatic.update(Value.kReverse);
-        //this.gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS1);
     }
 
     /** This function is run once each time the robot enters autonomous mode. */
     @Override
     public void autonomousInit() {
         
+        //Jerk Forward for cube to fall off robot
+
+        this._driveSyst.update(0.51, 0.51);
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            //e.printStackTrace();
+        }
+
+        this._driveSyst.update(0, 0);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            //e.printStackTrace();
+        }
+
+        //Scores Cube
 
         this._driveSyst.update(-0.51, -0.51);
-        
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(750);
+        } catch (InterruptedException e) {
+            //e.printStackTrace();
+        }
+
+        //Drive onto Charging Station/Community
+
+        this._driveSyst.update(0.51, 0.51);
+
         try {
             TimeUnit.MILLISECONDS.sleep(3000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        /**this._driveSyst.update(0.25, -0.25);
-        
-        try {
-            TimeUnit.MILLISECONDS.sleep(1500);
-        } catch (InterruptedException e) {
             //e.printStackTrace();
-        }*/
+        }
+
+        //Stop
+
         this._driveSyst.update(0, 0);
-        /**this._clawSyst.update(1);
-
-        try {
-            TimeUnit.MILLISECONDS.sleep(250);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        this._ArmSyst.update(1);
-        
-        try {
-            TimeUnit.MILLISECONDS.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        this._ArmSyst.update(0);
-        this._Pneumatic.update(Value.kForward);
-
-        try {
-            TimeUnit.MILLISECONDS.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
-        this._clawSyst.update(-1);
-
-        try {
-            TimeUnit.MILLISECONDS.sleep(250);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        this._clawSyst.update(0);
-        this._ArmSyst.update(-.3);
-        this._Pneumatic.update(Value.kReverse);
-
-
-        
-
-        this._driveSyst.update(0, 0);*/
     }
 
     /** This function is called periodically during autonomous. */
     @Override
     public void autonomousPeriodic() {
+        TurnToAngle(this.gyro.getAngle()); {
+
+        }
         /*double angle = this.gyro.getAngle();
         if (angle > 2 && angle < 90) {
             this._driveSyst.update(-0.1, -0.1);
@@ -161,4 +148,52 @@ public class Robot extends TimedRobot {
             
         }*/
     }
+            /**this._driveSyst.update(0.25, -0.25);
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(1500);
+        } catch (InterruptedException e) {
+            //e.printStackTrace();
+        }*/
+            /**this._clawSyst.update(1);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._ArmSyst.update(1);
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._ArmSyst.update(0);
+        this._Pneumatic.update(Value.kForward);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        this._clawSyst.update(-1);
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this._clawSyst.update(0);
+        this._ArmSyst.update(-.3);
+        this._Pneumatic.update(Value.kReverse);
+
+
+        
+
+        this._driveSyst.update(0, 0);*/
 }
