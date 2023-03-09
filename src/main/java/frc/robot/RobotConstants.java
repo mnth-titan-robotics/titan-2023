@@ -43,5 +43,6 @@ public class RobotConstants {
     public static final int Solenoid_4_A = 6;
     public static final int Solenoid_4_B = 7;
 
-    //Gyro Values
+    //PID Constants
+    public static final int kTurnP = 1;
 }

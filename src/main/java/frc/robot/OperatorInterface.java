@@ -17,14 +17,14 @@ public class OperatorInterface {
     // driver joysticks set up
     public double leftDriveStick() {
         if (this.pilot_joy.getRawButton(6)) {
-        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 0.8;
+        return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 1;
         }
         return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_L) * 0.6;
     }
 
     public double rightDriveStick() {
         if (this.pilot_joy.getRawButton(6)) {
-            return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.8;
+            return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 1;
             }
             return this.pilot_joy.getRawAxis(RobotConstants.CONTROLLER_DRIVE_CHANNEL_R) * 0.6;
     }
